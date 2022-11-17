@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\overw\\c# test\\fuelStataionAssignment\\fuelStataionAssignment.csproj",
+      "projectUniqueName": "C:\\Users\\overw\\Documents\\ARU\\FuelStation\\fuelStataionAssignment\\fuelStataionAssignment.csproj",
       "projectName": "fuelStataionAssignment",
-      "projectPath": "C:\\Users\\overw\\c# test\\fuelStataionAssignment\\fuelStataionAssignment.csproj",
+      "projectPath": "C:\\Users\\overw\\Documents\\ARU\\FuelStation\\fuelStataionAssignment\\fuelStataionAssignment.csproj",
       "packagesPath": "C:\\Users\\overw\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\overw\\c# test\\fuelStataionAssignment\\obj\\",
+      "outputPath": "C:\\Users\\overw\\Documents\\ARU\\FuelStation\\fuelStataionAssignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\overw\\AppData\\Roaming\\NuGet\\NuGet.Config"

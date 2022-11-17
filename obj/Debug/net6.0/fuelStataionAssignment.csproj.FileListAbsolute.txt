@@ -13,3 +13,18 @@ C:\Users\overw\c# test\fuelStataionAssignment\obj\Debug\net6.0\refint\fuelStatai
 C:\Users\overw\c# test\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.pdb
 C:\Users\overw\c# test\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.genruntimeconfig.cache
 C:\Users\overw\c# test\fuelStataionAssignment\obj\Debug\net6.0\ref\fuelStataionAssignment.dll
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\bin\Debug\net6.0\fuelStataionAssignment.exe
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\bin\Debug\net6.0\fuelStataionAssignment.deps.json
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\bin\Debug\net6.0\fuelStataionAssignment.runtimeconfig.json
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\bin\Debug\net6.0\fuelStataionAssignment.dll
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\bin\Debug\net6.0\fuelStataionAssignment.pdb
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.csproj.AssemblyReference.cache
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.AssemblyInfoInputs.cache
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.AssemblyInfo.cs
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.csproj.CoreCompileInputs.cache
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.dll
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\refint\fuelStataionAssignment.dll
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.pdb
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\fuelStataionAssignment.genruntimeconfig.cache
+C:\Users\overw\Documents\ARU\FuelStation\fuelStataionAssignment\obj\Debug\net6.0\ref\fuelStataionAssignment.dll
