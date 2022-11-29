@@ -1,11 +1,12 @@
 ﻿Random rnd = new Random();
 
 Processing vehProccess = new Processing();
+Pumps foreCourt = new Pumps();
 
 List<string> queue = new List<string>();
-string vehStats = ""; // temp - ignore
-string vehType = "";
 string[] fuelTypes = { "unleaded", "diesel", "LPG" };
+string vehStats = "";
+string vehType = "";
 string fuelType; // for current vehicle
 int[] fuelPrices = { 150, 175, 75 };
 int fuelPrice; // for current vehicle
@@ -17,13 +18,15 @@ int curFill; // how full the vehicle is when it arrives
 int randNum = 0;
 int vehTypeNum = 0;
 int timerInterval = 0;
-int vehServiced;
-int vehLeft;
+int vehServiced = 0;
+int vehLeft = 0;
 int clock = 0;
+bool isQueueEmpty = true;
+bool isQueueFull = false;
 
 void clockIncrease(object o)
 {
-    clock += 10;
+    clock += 50;
 }
 
 void addToQueue(object o)
@@ -31,12 +34,15 @@ void addToQueue(object o)
 
     if (queue.Count() > 4)
     {
-        Console.WriteLine("Queue is full");
+        isQueueFull = true;
     }
 
     else
     {
+        isQueueFull = false;
+        isQueueEmpty = false;
         queue.Add(vehCreator());
+        userInterface("");
     }
 
 }
@@ -44,18 +50,37 @@ void addToQueue(object o)
 void userInterface(object o)
 {
     Console.Clear();
+    foreCourt.displayForecourt();
+    queueFull();
+    queueEmpty();
     displayQueue();
+    Console.WriteLine($"{vehLeft} vehicles have left.");
 }
 
-void queueToPump(object o)
+void queueToPumpCheck(object o)
 {
-    if (queue.Count() == 0)
-    {Console.WriteLine("Queue is empty");}
-    else
+    if (queue.Count() > 0)
     {
-    vehProccess.setVehStats(queue[0]);
-    Console.WriteLine($"{vehProccess.getVehType()}\n{vehProccess.getCurFill()}\n{vehProccess.getFuelType()}\n{vehProccess.getFuelPrice()}\n{vehProccess.getJoinTime()}");
-    queue.RemoveAt(0);
+        queueToPump();
+    }
+}
+
+void queueToPump()
+{
+    int pumpNum = foreCourt.getFreePump();
+    if (queue.Count() != 0 && pumpNum != -1 && foreCourt.isForecourtAvailable())
+    {
+
+        isQueueEmpty = false;
+        vehProccess.setVehStats(queue[0]);
+        foreCourt.setPumpInfo(vehProccess.getVehType(), vehProccess.getCurFill(), vehProccess.getFuelType(), vehProccess.getJoinTime(), vehProccess.getLeaveTime(), pumpNum);
+        queue.RemoveAt(0);
+
+    }
+    else if (queue.Count() == 0)
+    {
+        isQueueEmpty = true;
+
     }
 }
 
@@ -65,6 +90,22 @@ void displayQueue()
     for (int i = 0; i < queue.Count(); i++)
     {
         Console.WriteLine($"{(i + 1)}: {queue[i]}");
+    }
+}
+
+void queueFull()
+{
+    if (isQueueFull)
+    {
+        Console.WriteLine("Queue is full");
+    }
+}
+
+void queueEmpty()
+{
+    if (isQueueEmpty)
+    {
+        Console.WriteLine("Queue is empty");
     }
 }
 
@@ -95,61 +136,38 @@ string vehCreator()
     }
     curFill = rnd.Next(1, (fuelCap / 2));
     fuelType = fuelTypes[randNum];
-    fuelPrice = fuelPrices[randNum];
 
-    vehStats = vehType.ToUpper() + " " + curFill + " " + fuelType + " " + fuelPrice + " " + clock;
+
+    vehStats = vehType.ToUpper() + " " + curFill + " " + fuelType + " " + clock + " " + (clock + rnd.Next(1000, 2000));
 
     return vehStats;
 }
 
-Timer clockTimer = new Timer(clockIncrease, null, 0, 10);
-Timer queueTimer = new Timer(addToQueue, null, 0, (rnd.Next(1500, 2200)));
-Timer UITimer = new Timer(userInterface, null, 0, 250);
-//Timer queueToPumpTimer = new Timer(queueToPump, null, 0, 25);
+void leaveQueue(object o)
+{
+    for (int i = 0; i < queue.Count(); i++)
+    {
+        vehProccess.setVehStats(queue[0]);
+        if (clock >= vehProccess.getLeaveTime())
+        {
+            queue.RemoveAt(0);
+            vehLeft++;
+            userInterface("");
+        }
+    }
+}
+
+Timer clockTimer = new Timer(clockIncrease, null, 0, 50);
+
+Timer queueTimer = new Timer(addToQueue, null, (rnd.Next(1500, 2200)), (rnd.Next(1500, 2200)));
+
+Timer UITimer = new Timer(userInterface, null, 0, 1500);
+
+Timer queueToPumpTimer = new Timer(queueToPumpCheck, null, 0, 50);
+
+Timer leaveQueueTimer = new Timer(leaveQueue, null, 0, 50);
+
+
 
 Console.ReadKey();
-
-
-
-
-
-/*while (true)
-{
-    Console.WriteLine("clock: "+clock);
-    while (queue.Count() < 5)
-    {
-        Console.WriteLine("clock: "+clock);
-        if (queue.Count() > 4)
-        {
-            Console.WriteLine("Queue is full");
-        }
-
-        else
-        {
-            queue.Add(vehCreator());
-        }
-
-        Console.WriteLine("Queue:");
-        for (int i = 0; i < queue.Count(); i++)
-        {
-            Console.WriteLine($"{(i + 1)}: {queue[i]}");
-        }
-
-        timerInterval = rnd.Next(1500, 2200);
-        Thread.Sleep(timerInterval);
-        Console.Clear();
-
-    }
-
-    vehProccess.setVehStats(queue[0]);
-    Console.WriteLine($"{vehProccess.getVehType()}\n{vehProccess.getCurFill()}\n{vehProccess.getFuelType()}\n{vehProccess.getFuelPrice()}");
-    queue.RemoveAt(0);
-
-}*/
-
-
-
-
-
-
 
